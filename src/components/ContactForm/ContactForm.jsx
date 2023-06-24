@@ -10,8 +10,7 @@ import {
   InputRightElement,
   useToast,
 } from '@chakra-ui/react';
-import { Icon, PhoneIcon } from '@chakra-ui/icons';
-import { BsFillPersonFill } from 'react-icons/bs';
+import { InfoIcon, PhoneIcon } from '@chakra-ui/icons';
 import { addContactFailure, addContactSuccess } from 'utils/toasts';
 
 export default function ContactForm() {
@@ -66,7 +65,7 @@ export default function ContactForm() {
         <p>Name</p>
         <InputGroup>
           <InputRightElement pointerEvents="none">
-            <Icon as={BsFillPersonFill} color='green.400'/>
+            <InfoIcon color='green.400'/>
           </InputRightElement>
           <Input
             focusBorderColor="green.400"

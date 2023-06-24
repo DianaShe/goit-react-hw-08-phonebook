@@ -66,7 +66,7 @@ export default function ContactForm() {
         <p>Name</p>
         <InputGroup>
           <InputRightElement pointerEvents="none">
-            <Icon as={BsFillPersonFill}/>
+            <Icon as={BsFillPersonFill} color='green.400'/>
           </InputRightElement>
           <Input
             focusBorderColor="green.400"

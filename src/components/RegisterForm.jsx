@@ -90,7 +90,6 @@ function RegisterForm() {
           pr="4.5rem"
           name="email"
           type="email"
-          pattern="/^\S+@\S+\.\S+$/"
           title="Email should contain @. For example, example@mail.com"
           onChange={handleInputChange}
         />

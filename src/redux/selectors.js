@@ -20,3 +20,5 @@ export const getUserMail = state => state.auth.user.email;
 export const getIsLoggedIn = state => state.auth.isLoggedIn;
 
 export const getAuthToken = state => state.auth.access_token;
+
+export const getAuthInProgress = state => state.auth.authInProgress

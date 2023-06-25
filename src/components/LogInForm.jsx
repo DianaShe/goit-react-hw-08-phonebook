@@ -10,10 +10,12 @@ import {
   useToast
 } from '@chakra-ui/react';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { logIn } from 'redux/auth/operations';
 import { LogInFialure, logInSuccess } from 'utils/toasts';
+import MySpinner from './MySpinner';
+import { getAuthInProgress } from 'redux/selectors';
 
 
 function LogInForm() {
@@ -25,6 +27,8 @@ function LogInForm() {
   const dispatch = useDispatch()
   const toast = useToast()
   const navigate = useNavigate()
+  const authInProgress = useSelector(getAuthInProgress)
+
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -53,6 +57,7 @@ function LogInForm() {
 
   return (
     <Stack as='form' spacing={4} w={400} mr='auto' ml='auto' onSubmit={handleSubmit}>
+        {authInProgress && <MySpinner/>}
       <Heading textAlign='center' color='green.400'>Log In</Heading>
       <InputGroup>
         <InputRightElement>

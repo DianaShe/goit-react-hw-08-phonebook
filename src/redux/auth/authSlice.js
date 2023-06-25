@@ -1,6 +1,6 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { fetchCurrentUser, logIn, logOut, registerUser } from './operations';
-import { handleError, handleFetchCurrentUserFulfilled, handleLogInFulfilled, handleLogOutFulfilled, handleRegisterUserFulfilled } from 'redux/auth/handlers';
+import { handleError, handleFetchCurrentUserFulfilled, handleLogInFulfilled, handleLogOutFulfilled, handlePending, handleRegisterUserFulfilled } from 'redux/auth/handlers';
 
 const authSlice = createSlice({
   name: 'auth',
@@ -9,6 +9,7 @@ const authSlice = createSlice({
     isLoggedIn: false,
     error: null,
     access_token: null,
+    authInProgress: false,
   },
   extraReducers: builder =>
     builder.addCase(registerUser.fulfilled, handleRegisterUserFulfilled)
@@ -16,7 +17,8 @@ const authSlice = createSlice({
     .addCase(logOut.fulfilled, handleLogOutFulfilled)
     .addCase(fetchCurrentUser.fulfilled, handleFetchCurrentUserFulfilled)
     .addCase(fetchCurrentUser.rejected, handleError)
-    .addCase(isAnyOf(registerUser.rejected, logIn.rejected, fetchCurrentUser.rejected, logOut.rejected), handleError)
+    .addMatcher(isAnyOf(registerUser.rejected, logIn.rejected, fetchCurrentUser.rejected, logOut.rejected), handleError)
+    .addMatcher(isAnyOf(registerUser.pending, logIn.pending, fetchCurrentUser.pending, logOut.pending), handlePending)
     ,
 });
 

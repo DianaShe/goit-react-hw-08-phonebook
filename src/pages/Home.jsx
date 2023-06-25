@@ -2,7 +2,7 @@ import { Box, Heading, Highlight, Text } from '@chakra-ui/react';
 
 export default function Home() {
   return (
-    <Box maxW={1200}>
+    <Box>
       <Heading color="green.400" textAlign="center" mt={20} mb={20}>
         Phonebook
       </Heading>

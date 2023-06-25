@@ -10,11 +10,13 @@ import {
   Text,
 } from '@chakra-ui/react';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { registerUser } from 'redux/auth/operations';
 import { BsFillPersonFill } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
 import { registerFialure, registerSuccess } from 'utils/toasts';
+import { getAuthInProgress } from 'redux/selectors';
+import MySpinner from './MySpinner';
 
 function RegisterForm() {
   const [show, setShow] = useState(false);
@@ -25,6 +27,7 @@ function RegisterForm() {
   const dispatch = useDispatch();
   const toast = useToast();
   const navigate = useNavigate();
+  const authInProgress = useSelector(getAuthInProgress)
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -64,6 +67,7 @@ function RegisterForm() {
       ml="auto"
       onSubmit={handleSubmit}
     >
+      {authInProgress && <MySpinner/>}
       <Heading textAlign="center" color="green.400">
         Register
       </Heading>

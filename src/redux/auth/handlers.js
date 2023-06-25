@@ -3,6 +3,7 @@ export const handleRegisterUserFulfilled = (state, {payload}) => {
     state.isLoggedIn = true;
     state.access_token = payload.token;
     state.error = null;
+    state.authInProgress = false;
   }
   
   export const handleLogInFulfilled = (state, {payload}) => {
@@ -10,6 +11,7 @@ export const handleRegisterUserFulfilled = (state, {payload}) => {
     state.error = null;
     state.access_token = payload.token;
     state.user = payload.user
+    state.authInProgress = false;
   }
   
   export const handleLogOutFulfilled = (state) => {
@@ -17,12 +19,14 @@ export const handleRegisterUserFulfilled = (state, {payload}) => {
     state.error = null;
     state.access_token=null;
     state.user = { name: null, email: null }
+    state.authInProgress = false;
   }
 
   export const handleFetchCurrentUserFulfilled = (state, {payload}) => {
     state.isLoggedIn = true;
     state.error = null;
     state.user = payload
+    state.authInProgress = false;
   }
 
   export const handleError = (state, {payload}) => {
@@ -30,4 +34,9 @@ export const handleRegisterUserFulfilled = (state, {payload}) => {
     state.isLoggedIn = false;
     state.access_token= null;
     state.user = { name: null, email: null }
+    state.authInProgress = false;
+  }
+
+  export const handlePending = (state) => {
+    state.authInProgress = true;
   }

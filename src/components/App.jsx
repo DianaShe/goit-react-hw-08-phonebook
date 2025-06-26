@@ -2,9 +2,6 @@
 import { Route, Routes } from 'react-router-dom';
 import Home from 'pages/Home';
 import SharedLayout from './SharedLayout/SharedLayout';
-// import Contacts from 'pages/Contacts';
-// import Register from 'pages/Register';
-// import LogIn from 'pages/LogIn';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 import { lazy } from 'react';
@@ -24,5 +21,5 @@ export function App () {
         </Route>
       </Routes>
     );
-  
+
 }
